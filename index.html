@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only Kashish 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.18);
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    z-index: 2;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+
+  /* 🌟 Glowing name */
+  .glow {
+    font-size: 26px;
+    font-weight: bold;
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1;
+    }
+    50% {
+      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 45px #ff1493;
+    }
+    100% {
+      text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1;
+    }
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .correct {
+    background: #4CAF50;
+    color: #fff;
+  }
+
+  .wrong {
+    background: #ff4d6d;
+    color: #fff;
+    position: relative;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .final {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  /* 💕 Floating hearts */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    width: 18px;
+    height: 18px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -9px; left: 0; }
+  .heart::after { left: 9px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(45deg); }
+    100% { transform: translateY(-110vh) rotate(45deg); }
+  }
+</style>
+</head>
+
+<body onclick="playMusic()">
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://files.catbox.moe/3d6n3p.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h2 id="question">
+    Hi <span class="glow">Kashish</span> 💖  
+    <br>Ek chhota sa quiz…  
+    <br>— Tanzeem
+  </h2>
+
+  <div id="options"></div>
+
+  <div class="final hidden" id="finalMsg">
+    Greattt Choice 😍☕  
+    <br><br>
+    <span class="glow">Kashish</span>, tum really special ho…  
+    <br>— Tanzeem ❤️
+  </div>
+</div>
+
+<script>
+let musicStarted = false;
+function playMusic() {
+  if (!musicStarted) {
+    document.getElementById("bgMusic").play();
+    musicStarted = true;
+  }
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  heart.style.opacity = Math.random();
+  heart.style.transform = `scale(${Math.random() + 0.5}) rotate(45deg)`;
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 400);
+
+/* Quiz */
+const quiz = [
+  {
+    q: "Who is the prettiest girl in the world?",
+    o: ["Aishwarya Rai", "Katrina Kaif", "Deepika Padukone", "Kashish Khan"],
+    a: "Kashish Khan"
+  },
+  {
+    q: "Who has the cutest smile in the world?",
+    o: ["Alia Bhatt", "Kiara Advani", "Shraddha Kapoor", "Kashish Khan"],
+    a: "Kashish Khan"
+  },
+  {
+    q: "Who has the most innocent face?",
+    o: ["Anushka Sharma", "Sara Ali Khan", "Janhvi Kapoor", "Kashish Khan"],
+    a: "Kashish Khan"
+  },
+  {
+    q: "Who has the most beautiful voice?",
+    o: ["Shreya Ghoshal", "Sunidhi Chauhan", "Neha Kakkar", "Kashish Khan"],
+    a: "Kashish Khan"
+  },
+  {
+    q: "Why do you like Kashish?",
+    o: [
+      "She is pretty",
+      "She is sweet",
+      "She is kind",
+      "Because she is perfect – emotionally mature, confident, honest, educated & innocent"
+    ],
+    a: "Because she is perfect – emotionally mature, confident, honest, educated & innocent"
+  },
+  {
+    q: "What makes Kashish different from everyone else?",
+    o: [
+      "Her style",
+      "Her smile",
+      "Her confidence",
+      "Ek Kashish hai… uski overall personality mein magic hai ✨"
+    ],
+    a: "Ek Kashish hai… uski overall personality mein magic hai ✨"
+  },
+  {
+    q: "What about Kashish that no one can ignore?",
+    o: [
+      "Her confidence",
+      "Her nature",
+      "Her smile",
+      "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"
+    ],
+    a: "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"
+  },
+  {
+    q: "Kashish… mere sath coffee ke liye chalogi? ☕",
+    o: ["Yes 😍", "No 🙈"],
+    a: "Yes 😍"
+  }
+];
+
+let i = 0;
+const qEl = document.getElementById("question");
+const oEl = document.getElementById("options");
+const fEl = document.getElementById("finalMsg");
+
+function load() {
+  oEl.innerHTML = "";
+  qEl.innerText = quiz[i].q;
+
+  quiz[i].o.forEach(opt => {
+    const b = document.createElement("button");
+    b.innerText = opt;
+
+    if (opt === quiz[i].a) {
+      b.className = "correct";
+      b.onclick = () => {
+        i++;
+        if (i < quiz.length) load();
+        else {
+          oEl.classList.add("hidden");
+          fEl.classList.remove("hidden");
+        }
+      };
+    } else {
+      b.className = "wrong";
+      b.onmouseover = b.ontouchstart = () => {
+        b.style.transform =
+          `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px)`;
+      };
+    }
+    oEl.appendChild(b);
+  });
+}
+
+load();
+</script>
+
+</body>
+</html>

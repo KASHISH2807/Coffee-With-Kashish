@@ -35,7 +35,6 @@
     line-height: 1.4;
   }
 
-  /* 🌟 Glowing name */
   .glow {
     font-size: 26px;
     font-weight: bold;
@@ -43,15 +42,9 @@
   }
 
   @keyframes glow {
-    0% {
-      text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1;
-    }
-    50% {
-      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 45px #ff1493;
-    }
-    100% {
-      text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1;
-    }
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1; }
+    50% { text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 45px #ff1493; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1; }
   }
 
   button {
@@ -62,22 +55,10 @@
     border: none;
     font-size: 15px;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  .correct {
-    background: #4CAF50;
-    color: #fff;
-  }
-
-  .wrong {
-    background: #ff4d6d;
-    color: #fff;
-    position: relative;
-  }
-
-  .hidden {
-    display: none;
-  }
+  .hidden { display: none; }
 
   .final {
     font-size: 20px;
@@ -85,18 +66,18 @@
     margin-top: 20px;
   }
 
-  /* 💕 Floating hearts */
-  .heart {
+  .heart, .sparkle {
     position: absolute;
     bottom: -20px;
     width: 18px;
     height: 18px;
-    background: red;
     transform: rotate(45deg);
-    animation: float 6s linear infinite;
     opacity: 0.7;
   }
 
+  .heart {
+    background: red;
+  }
   .heart::before,
   .heart::after {
     content: "";
@@ -106,9 +87,15 @@
     background: red;
     border-radius: 50%;
   }
-
   .heart::before { top: -9px; left: 0; }
   .heart::after { left: 9px; top: 0; }
+
+  .sparkle {
+    background: gold;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
 
   @keyframes float {
     0% { transform: translateY(0) rotate(45deg); }
@@ -119,7 +106,6 @@
 
 <body onclick="playMusic()">
 
-<!-- 🎵 Background Music -->
 <audio id="bgMusic" loop>
   <source src="https://files.catbox.moe/3d6n3p.mp3" type="audio/mpeg">
 </audio>
@@ -162,63 +148,16 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 7000);
 }, 400);
 
-/* Quiz */
+/* Quiz questions */
 const quiz = [
-  {
-    q: "Who is the prettiest girl in the world?",
-    o: ["Aishwarya Rai", "Katrina Kaif", "Deepika Padukone", "Kashish Khan"],
-    a: "Kashish Khan"
-  },
-  {
-    q: "Who has the cutest smile in the world?",
-    o: ["Alia Bhatt", "Kiara Advani", "Shraddha Kapoor", "Kashish Khan"],
-    a: "Kashish Khan"
-  },
-  {
-    q: "Who has the most innocent face?",
-    o: ["Anushka Sharma", "Sara Ali Khan", "Janhvi Kapoor", "Kashish Khan"],
-    a: "Kashish Khan"
-  },
-  {
-    q: "Who has the most beautiful voice?",
-    o: ["Shreya Ghoshal", "Sunidhi Chauhan", "Neha Kakkar", "Kashish Khan"],
-    a: "Kashish Khan"
-  },
-  {
-    q: "Why do you like Kashish?",
-    o: [
-      "She is pretty",
-      "She is sweet",
-      "She is kind",
-      "Because she is perfect – emotionally mature, confident, honest, educated & innocent"
-    ],
-    a: "Because she is perfect – emotionally mature, confident, honest, educated & innocent"
-  },
-  {
-    q: "What makes Kashish different from everyone else?",
-    o: [
-      "Her style",
-      "Her smile",
-      "Her confidence",
-      "Ek Kashish hai… uski overall personality mein magic hai ✨"
-    ],
-    a: "Ek Kashish hai… uski overall personality mein magic hai ✨"
-  },
-  {
-    q: "What about Kashish that no one can ignore?",
-    o: [
-      "Her confidence",
-      "Her nature",
-      "Her smile",
-      "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"
-    ],
-    a: "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"
-  },
-  {
-    q: "Kashish… mere sath coffee ke liye chalogi? ☕",
-    o: ["Yes 😍", "No 🙈"],
-    a: "Yes 😍"
-  }
+  { q: "Who is the prettiest girl in the world?", o: ["Aishwarya Rai", "Katrina Kaif", "Deepika Padukone", "Kashish Khan"], a: "Kashish Khan" },
+  { q: "Who has the cutest smile in the world?", o: ["Alia Bhatt", "Kiara Advani", "Shraddha Kapoor", "Kashish Khan"], a: "Kashish Khan" },
+  { q: "Who has the most innocent face?", o: ["Anushka Sharma", "Sara Ali Khan", "Janhvi Kapoor", "Kashish Khan"], a: "Kashish Khan" },
+  { q: "Who has the most beautiful voice?", o: ["Shreya Ghoshal", "Sunidhi Chauhan", "Neha Kakkar", "Kashish Khan"], a: "Kashish Khan" },
+  { q: "Why do you like Kashish?", o: ["She is pretty","She is sweet","She is kind","Because she is perfect – emotionally mature, confident, honest, educated & innocent"], a: "Because she is perfect – emotionally mature, confident, honest, educated & innocent" },
+  { q: "What makes Kashish different from everyone else?", o: ["Her style","Her smile","Her confidence","Ek Kashish hai… uski overall personality mein magic hai ✨"], a: "Ek Kashish hai… uski overall personality mein magic hai ✨" },
+  { q: "What about Kashish that no one can ignore?", o: ["Her confidence","Her nature","Her smile","Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"], a: "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫" },
+  { q: "Kashish… mere sath coffee ke liye chalogi? ☕", o: ["Yes 😍", "No 🙈"], a: "Yes 😍" }
 ];
 
 let i = 0;
@@ -233,26 +172,45 @@ function load() {
   quiz[i].o.forEach(opt => {
     const b = document.createElement("button");
     b.innerText = opt;
+    b.style.background = "#ff4d6d"; // same color initially
+    b.style.color = "#fff";
+    b.style.transition = "all 0.3s ease";
 
     if (opt === quiz[i].a) {
-      b.className = "correct";
       b.onclick = () => {
-        i++;
-        if (i < quiz.length) load();
-        else {
-          oEl.classList.add("hidden");
-          fEl.classList.remove("hidden");
-        }
+        b.style.background = "#4CAF50"; // green on correct
+        createSparkles(); // trigger sparkles
+        setTimeout(() => {
+          i++;
+          if (i < quiz.length) load();
+          else {
+            oEl.classList.add("hidden");
+            fEl.classList.remove("hidden");
+          }
+        }, 500);
       };
     } else {
-      b.className = "wrong";
       b.onmouseover = b.ontouchstart = () => {
-        b.style.transform =
-          `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px)`;
+        b.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px)`;
       };
     }
     oEl.appendChild(b);
   });
+}
+
+// Sparkle effect
+function createSparkles() {
+  for(let j=0;j<30;j++){
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random()*100 + "vw";
+    s.style.bottom = "0px";
+    s.style.opacity = Math.random();
+    s.style.transform = `scale(${Math.random()})`;
+    s.style.animation = `float 2s linear forwards`;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),2000);
+  }
 }
 
 load();

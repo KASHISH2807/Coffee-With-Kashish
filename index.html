@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Only Kashish 💖</title>
+<title>Only Afra 💖</title>
 
 <style>
   body {
@@ -112,7 +112,7 @@
 
 <div class="card">
   <h2 id="question">
-    Hi <span class="glow">Kashish</span> 💖  
+    Hi <span class="glow">Afra</span> 💖  
     <br>Ek chhota sa quiz…  
     <br>— Tanzeem
   </h2>
@@ -122,7 +122,7 @@
   <div class="final hidden" id="finalMsg">
     Greattt Choice 😍☕  
     <br><br>
-    <span class="glow">Kashish</span>, tum really special ho…  
+    <span class="glow">Afra</span>, tum really special ho…  
     <br>— Tanzeem ❤️
   </div>
 </div>
@@ -150,14 +150,14 @@ setInterval(() => {
 
 /* Quiz questions */
 const quiz = [
-  { q: "Who is the prettiest girl in the world?", o: ["Aishwarya Rai", "Katrina Kaif", "Deepika Padukone", "Kashish Khan"], a: "Kashish Khan" },
-  { q: "Who has the cutest smile in the world?", o: ["Alia Bhatt", "Kiara Advani", "Shraddha Kapoor", "Kashish Khan"], a: "Kashish Khan" },
-  { q: "Who has the most innocent face?", o: ["Anushka Sharma", "Sara Ali Khan", "Janhvi Kapoor", "Kashish Khan"], a: "Kashish Khan" },
-  { q: "Who has the most beautiful voice?", o: ["Shreya Ghoshal", "Sunidhi Chauhan", "Neha Kakkar", "Kashish Khan"], a: "Kashish Khan" },
-  { q: "Why do you like Kashish?", o: ["She is pretty","She is sweet","She is kind","Because she is perfect – emotionally mature, confident, honest, educated & innocent"], a: "Because she is perfect – emotionally mature, confident, honest, educated & innocent" },
-  { q: "What makes Kashish different from everyone else?", o: ["Her style","Her smile","Her confidence","Ek Kashish hai… uski overall personality mein magic hai ✨"], a: "Ek Kashish hai… uski overall personality mein magic hai ✨" },
-  { q: "What about Kashish that no one can ignore?", o: ["Her confidence","Her nature","Her smile","Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"], a: "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫" },
-  { q: "Kashish… mere sath coffee ke liye chalogi? ☕", o: ["Yes 😍", "No 🙈"], a: "Yes 😍" }
+  { q: "Who is the prettiest girl in the world?", o: ["Aishwarya Rai", "Katrina Kaif", "Deepika Padukone", "Afra"], a: "Afra" },
+  { q: "Who has the cutest smile in the world?", o: ["Alia Bhatt", "Kiara Advani", "Shraddha Kapoor", "Afra"], a: "Afra" },
+  { q: "Who has the most innocent face?", o: ["Anushka Sharma", "Sara Ali Khan", "Janhvi Kapoor", "Afra"], a: "Afra" },
+  { q: "Who has the most beautiful voice?", o: ["Shreya Ghoshal", "Sunidhi Chauhan", "Neha Kakkar", "Afra"], a: "Afra" },
+  { q: "Why do you like Afra?", o: ["She is pretty","She is sweet","She is kind","Because she is perfect – emotionally mature, confident, honest, educated & innocent"], a: "Because she is perfect – emotionally mature, confident, honest, educated & innocent" },
+  { q: "What makes Afra different from everyone else?", o: ["Her style","Her smile","Her confidence","Ek Afra hai… uski overall personality mein magic hai ✨"], a: "Ek Afra hai… uski overall personality mein magic hai ✨" },
+  { q: "What about Afra that no one can ignore?", o: ["Her confidence","Her nature","Her smile","Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫"], a: "Uski aankhen… jo baatein karti hain aur kisi ko bhi hypnotize kar sakti hain 💫" },
+  { q: "Afra… mere sath coffee ke liye chalogi? ☕", o: ["Yes 😍", "No 🙈"], a: "Yes 😍" }
 ];
 
 let i = 0;
@@ -172,14 +172,14 @@ function load() {
   quiz[i].o.forEach(opt => {
     const b = document.createElement("button");
     b.innerText = opt;
-    b.style.background = "#ff4d6d"; // same color initially
+    b.style.background = "#ff4d6d";
     b.style.color = "#fff";
     b.style.transition = "all 0.3s ease";
 
     if (opt === quiz[i].a) {
       b.onclick = () => {
-        b.style.background = "#4CAF50"; // green on correct
-        createSparkles(); // trigger sparkles
+        b.style.background = "#4CAF50";
+        createSparkles();
         setTimeout(() => {
           i++;
           if (i < quiz.length) load();
@@ -198,7 +198,7 @@ function load() {
   });
 }
 
-// Sparkle effect
+/* Sparkle effect */
 function createSparkles() {
   for(let j=0;j<30;j++){
     const s = document.createElement("div");
